@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+    <div id="app">
+        <div class="container">
+            <h1>To do list</h1>
+            <div class="containerElement">
+                <div>
+                    <ul>
+                        <li v-for="(to, i) in toDo" :key="i" :class="[to.done ? `lineText` : '']">
+                            {{ to.testo }}
+                            <input type="checkbox" v-model="to.done" class="checkInput" @click="checkClick(i)">
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span v-for="(to, i) in toDo" @click="removeText(i)" class="x">X</span>
+                </div>
+            </div>
+            <div class="newTextInput">
+                <input class="addBtn" type="text" v-model="nuovoValore" @keyup.enter="addButton()">
+                <button class="addBtn btnStyle" @click="addButton()">Aggiungi alla lista</button>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script src="./js/main.js"></script>
+</body>
